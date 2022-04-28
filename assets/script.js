@@ -1,31 +1,74 @@
+//grab the carousel container from the index page
 const $carousel = $("#innerCarousel");
-//pull data from the jikan API and store in aniShow object, then push on the aniArry
-$.get(`https://cors-anywhere.herokuapp.com/https://api.jikan.moe/v4/anime`, (data) => {                
-    console.log(data.data.length)
-    //loop through data and build anime objects, then build carousel div tags from objects
-    for(let i = 0; i < data.data.length; i++){           
-        //build div strings for carousel
-        const $carouselDiv = $(`<div class=\"carousel-item\"><img src=\"${data.data[i].images.jpg.large_image_url}\" class=\"d-block w-100\" alt=\"...\"></div>`);
-        if(i === 0){
+//pull data from the jikan API and build a carousel obect using jquery to 
+//dynamically build the html tags
+$.get(`https://cors-anywhere.herokuapp.com/https://api.jikan.moe/v4/anime/?min_score=8.8`, (data) => {
+    console.log(data.data.length) //for debugging purposes
+    //loop through data and build carousel div tags and inner content
+    for (let i = 0; i < data.data.length; i++) {
+        //build carousel image div with image link from api        
+        const $carouselDiv = $(`<div class=\"carousel-item\"><img src=\"${data.data[i].images.jpg.large_image_url}\" class=\"d-block carouselImg\" alt=\"...\"></div>`);
+        //since the first item in the carousel has to be active, add active class when i === 0
+        if (i === 0) {
             $carouselDiv.addClass("active");
         }
-            const $carouselCaptionDiv = $(`<div class=\"carousel-caption d-none d-md-block\">
-            <h1>${data.data[i].title}</h1>
-            <h3>RATING:${data.data[i].rating}</h3>
-            <p>SYNOPSIS: ${data.data[i].synopsis}</p>
-            <p>BACKGROUND: ${data.data[i].background}</p>
-            <a href=\"${data.data[i].trailer.url}\">view trailer</a>
-            </div>`);
-            $carouselCaptionDiv.appendTo($carouselDiv);
+        //error check if there is no english title info returned
+        let name = data.data[i].title;
+        if (data.data[i].title_english != null) {
+            name = data.data[i].title_english;
+        }
+        //build carousel text content with a button for further data about each show and a rating label
+        const $carouselCaptionDiv = $(`<div class=\"carousel-caption position-absolute top-25 start-25 end-25 bottom-50 bg-light text-dark bg-opacity-50\">
+        <h1 id=\"${data.data[i].mal_id}\" type=\"button\" class=\"btn btn-dark opacity-100 btn-lg\" data-bs-toggle=\"modal\" data-bs-target=\"#aniModal\">${name}</h1>
+        <h5 class=\"opacity-100\">RATING: ${data.data[i].rating}</h5>        
+        </div>`);
+        //append the parts of the carousel to the carousel pulled at top of page
+        $carouselCaptionDiv.appendTo($carouselDiv);
         $carouselDiv.appendTo($carousel)
-    }        
+        const $aniTitleH1 = $(`#${data.data[i].mal_id}`);
+        //add click event listener to the button that opens the modal with further info
+        //this function will execute a new api request for info based on the mal_id which
+        //was stored in the ID of the H1 tag above.
+        $aniTitleH1.click(displayAnimeInfo);
+    }
 });
-
-/*  
-    example div
-    <div class="carousel-item">
-      <img src="..." class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Second slide label</h5>
-        <p>Some representative placeholder content for the second slide.</p>
-    </div>*/
+//called when the H1/button is clicked inside the carousel
+function displayAnimeInfo() {
+    //get the anime based on the ID that was stored as the H1's id
+    const $modal = $("#aniModal");
+    const $modalTitle = $("#aniModalLabel");
+    const $card = $("#aniCard");
+    $.get(`https://cors-anywhere.herokuapp.com/https://api.jikan.moe/v4/anime/${this.id}`, (data) => {
+        let title = data.data.title
+        //check if there is an english title(this value comes back null occaisonally)
+        //otherwise use the generic title value
+        if (data.data.title_english != null) {
+            title = data.data.title_english
+        }
+        //set the top of the modal to the name of the show
+        $modalTitle.text(title)
+        //build the card item shown in the modal with detailed data pulled about the show
+        const $cardImg = $(`<img id=\"cardImg\" src=\"${data.data.images.jpg.large_image_url}\" class=\"card-img-top\" alt=\"...\">`);
+        const $aniCardBody = $(`<div class=\"card-body\" id=\"aniCardBody\">
+        <h3 class=\"card-title display-3\">${title}</h3>
+        <p class=\"card-text\">RATING: ${data.data.rating}</p>
+        <p class=\"card-text\">POPULARITY RANK: ${data.data.popularity}</p>
+        <p class=\"card-text\">NUMBER OF EPISODES: ${data.data.episodes}</p>       
+        <p class=\"card-text\">AIRED: ${data.data.aired.prop.from.year} to ${data.data.aired.prop.to.year}</p>
+        <p class=\"card-text\">STATUS: ${data.data.status}</p>
+        <p class=\"card-text\">ABOUT: ${data.data.synopsis}</p>
+        <a href=\"${data.data.url}\" target=\"_blank\">MORE INFO</a><br>
+        <a href=\"${data.data.trailer.url}\" target=\"_blank\">TRAILER</a>      
+        </div>`);
+        $cardImg.appendTo($card);
+        $aniCardBody.appendTo($card);
+    });
+    $modal.show();//make the modal visible to the user
+    $closeBtn = $("#closeModal");
+    //add a click function to the close button of the modal that will 
+    //make it not visible and clear the card data out for next time
+    $closeBtn.click(function () {
+        $modal.hide();
+        $card.empty();
+    });
+}

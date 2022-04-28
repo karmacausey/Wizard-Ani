@@ -1,12 +1,24 @@
+p{
+  font-weight: bold;
+}
 .bg {
     /* The image used */
     background-image: url("/Wizard-Ani/assets/Images/outlaw.jpg");
   
     /* Full height */
-    height: 1500px;
+    height: 100vw;
   
     /* Center and scale the image nicely */
     background-position:top;
     background-repeat: repeat;
     background-size:cover;
+  }
+
+  /* Image sizing for all the different size images pulled 
+  from the API to the carousel */
+  .carouselImg{
+    object-fit:fill;
+    width:100%;
+    max-width: 95vw;
+    max-height: 95vh;
   }
