@@ -1,0 +1,12 @@
+.bg {
+    /* The image used */
+    background-image: url("/Wizard-Ani/assets/Images/outlaw.jpg");
+  
+    /* Full height */
+    height: 1500px;
+  
+    /* Center and scale the image nicely */
+    background-position:top;
+    background-repeat: repeat;
+    background-size:cover;
+  }
