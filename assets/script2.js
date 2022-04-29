@@ -1,7 +1,51 @@
 function main(){
-    //add listener to the submit button
+    //add listener to the buttons
     const $submit = $("#userSubmit")
     $submit.click(searchAni);
+    const $tv = $("#tv");
+    $tv.click(function(){
+        typeSearch("tv");
+    });
+    const $movie = $("#movie");
+    $movie.click(function(){
+        typeSearch("movie");
+    });
+    const $ova = $("#ova");
+    $ova.click(function(){
+        typeSearch("ova");
+    });
+    const $special = $("#special");
+    $special.click(function(){
+        typeSearch("special");
+    });
+    const $ona = $("#ona");
+    $ona.click(function(){
+        typeSearch("ona");
+    });
+    const $music = $("#music");
+    $music.click(function(){
+        typeSearch("music");
+    });
+    const $G = $("#G");
+    $G.click(function(){
+        ratingSearch("G");
+    });
+    const $PG13 = $("#PG-13");
+    $PG13.click(function(){
+        ratingSearch("PG-13");
+    });
+    const $R17 = $("#R17");
+    $R17.click(function(){
+        ratingSearch("R - 17+");
+    });
+    const $Rplus = $("#Rplus");    
+    $Rplus.click(function(){
+        ratingSearch("R+");
+    });
+    const $Rx = $("#Rx");
+    $Rx.click(function(){
+        ratingSearch("Rx");
+    });
 //pull data from the jikan API and build a carousel obect using jquery to 
 //dynamically build the html tags
 $.get(`https://api.jikan.moe/v4/anime?min_score=8.8`, (data) => {
@@ -38,22 +82,47 @@ $.get(`https://api.jikan.moe/v4/anime?min_score=8.8`, (data) => {
 });
 }
 
+//click function that sets the search box value, clicks type radio button, then calls the searchAni function
+function typeSearch(str){
+    const $search = $("#search");
+    $search.val(str);
+    const $type = $("#type");
+    $type.prop("checked", true);    
+    searchAni();
+}
 
-function searchAni(){
+//click function that sets the search box value, clicks rating radio button, then calls the searchAni function
+function ratingSearch(str){
+    const $search = $("#search");
+    $search.val(str);
+    const $rating = $("#rating");
+    $rating.prop("checked", true);   
+    searchAni();
+}
+
+function searchAni(){    
     let searchParam = "https://api.jikan.moe/v4/anime?";
     const $search = $("#search");
     const $carousel = $("#innerCarousel");
-    $carousel.empty();//empty previous carousel
+    const errorChkType = ["tv", "movie", "ova", "special", "ona", "music"];
+    const errorChkRating = ["G", "PG-13", "R - 17+", "R+", "Rx"];    
+    
     //set search parameter string based on user radio button selection and input
     if($("#title").prop("checked")){
         searchParam += `q=${$search.prop("value")}`;
-    }else if($("#type").prop("checked")){
+    }else if($("#type").prop("checked") && errorChkType.indexOf($search.prop("value")) !== -1){
         searchParam += `type=${$search.prop("value")}`;
-    }else if($("#rating").prop("checked")){
+    }else if($("#rating").prop("checked") && errorChkRating.indexOf($search.prop("value")) !== -1){
         searchParam += `rating=${$search.prop("value")}`;
-    }else if($("#min_score").prop("checked")){
+    }else if($("#min_score").prop("checked") && ($search.prop("value") > 8.5 && $search.prop("value") < 9.3)){
         searchParam += `min_score=${$search.prop("value")}`;
+    }else{
+        $search.val("");
+        alert("Please make a valid entry")
+        return null;
     }
+    alert('resetting carousel');
+    $carousel.empty();//empty previous carousel
     $.get(searchParam, (data) => {
     console.log(data.data.length) //for debugging purposes
     //loop through data and build carousel div tags and inner content
@@ -83,6 +152,7 @@ function searchAni(){
         //was stored in the ID of the H1 tag above.
         $aniTitleH1.click(displayAnimeInfo);
     }
+    $search.val("");
 });
 }
 //call main to start page
