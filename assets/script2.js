@@ -4,7 +4,7 @@ function main(){
     $submit.click(searchAni);
 //pull data from the jikan API and build a carousel obect using jquery to 
 //dynamically build the html tags
-$.get(`https://api.jikan.moe/v4/anime/?min_score=8.8`, (data) => {
+$.get(`https://api.jikan.moe/v4/anime?min_score=8.8`, (data) => {
     //grab the carousel container from the index page   
     const $carousel = $("#innerCarousel");    
     console.log(data.data.length) //for debugging purposes
@@ -37,14 +37,17 @@ $.get(`https://api.jikan.moe/v4/anime/?min_score=8.8`, (data) => {
     }
 });
 }
-//saved for later https://cors-anywhere.herokuapp.com/
+
+
 function searchAni(){
-    let searchParam = "/https://api.jikan.moe/v4/anime/?";
+    let searchParam = "https://api.jikan.moe/v4/anime?";
     const $search = $("#search");
     const $carousel = $("#innerCarousel");
     $carousel.empty();//empty previous carousel
     //set search parameter string based on user radio button selection and input
-    if($("#type").prop("checked")){
+    if($("#title").prop("checked")){
+        searchParam += `q=${$search.prop("value")}`;
+    }else if($("#type").prop("checked")){
         searchParam += `type=${$search.prop("value")}`;
     }else if($("#rating").prop("checked")){
         searchParam += `rating=${$search.prop("value")}`;

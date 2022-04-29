@@ -20,25 +20,31 @@
                 <button id="userSubmit">Search</button>
                 <p>Please choose a search option</p>
                 <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadio" id="title" value="q" checked>
+                    <label class="form-check-label" for="flexRadio0">
+                     Anime Title-
+                    </label>
+                </div>
+                <div class="form-check">
                     <input class="form-check-input" type="radio" name="flexRadio" id="type" value="type">
-                    <label class="form-check-label" for="flexRadio1" id="type">
+                    <label class="form-check-label" for="flexRadio1">
                       Type- enter one of the following options: <br>
                       tv | movie | ova | special | ona | music
                     </label>
-                  </div>
-                  <div class="form-check">
+                </div>
+                <div class="form-check">
                     <input class="form-check-input" type="radio" name="flexRadio" id="rating" value="rating">
                     <label class="form-check-label" for="flexRadio2">
                       Rating- enter one of the following options: <br>
                       G | PG-13 | R - 17+ | R+ | Rx
                     </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadio" id="min_score" value="min_score" checked>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadio" id="min_score" value="min_score">
                     <label class="form-check-label" for="flexRadio3">
                       Minimum Score- a good range is somewhere between 8.5 and 9.2<br>                      
                     </label>
-                  </div>
+                </div>
             </div>            
             <div class="col">
                 <div id="animeCarousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
