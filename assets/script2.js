@@ -121,7 +121,6 @@ function searchAni(){
         alert("Please make a valid entry")
         return null;
     }
-    alert('resetting carousel');
     $carousel.empty();//empty previous carousel
     $.get(searchParam, (data) => {
     console.log(data.data.length) //for debugging purposes
