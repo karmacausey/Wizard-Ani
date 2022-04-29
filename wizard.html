@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script type="text/javascript" defer src="assets/script2.js"></script>
+    <link rel="stylesheet" href="assets/style.css">
+    <title>Wizard</title>
+</head>
+<body class="bg">
+    <div class="container-sm px-4">
+        <div class="row align-items-start">
+            <div class="col bg-light shadow p-3 mb-5 bg-body rounded bg-opacity-75">            
+                <input type="text" name='search' id="search">
+                <button id="userSubmit">Search</button>
+                <p>Please choose a search option</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadio" id="type" value="type">
+                    <label class="form-check-label" for="flexRadio1" id="type">
+                      Type- enter one of the following options: <br>
+                      tv | movie | ova | special | ona | music
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadio" id="rating" value="rating">
+                    <label class="form-check-label" for="flexRadio2">
+                      Rating- enter one of the following options: <br>
+                      G | PG-13 | R - 17+ | R+ | Rx
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadio" id="min_score" value="min_score" checked>
+                    <label class="form-check-label" for="flexRadio3">
+                      Minimum Score- a good range is somewhere between 8.5 and 9.2<br>                      
+                    </label>
+                  </div>
+            </div>            
+            <div class="col">
+                <div id="animeCarousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                    <div class="carousel-inner" id="innerCarousel">
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#animeCarousel"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#animeCarousel"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+                <div class="modal fade" id="aniModal" tabindex="-1" aria-labelledby="aniModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-fullscreen">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="aniModalLabel"></h5>
+                            </div>
+                            <div class="modal-body">
+                                <div class="card" id="aniCard" style="width: 40rem;">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button id="closeModal" type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
