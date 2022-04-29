@@ -4,7 +4,7 @@ function main(){
     $submit.click(searchAni);
 //pull data from the jikan API and build a carousel obect using jquery to 
 //dynamically build the html tags
-$.get(`https://cors-anywhere.herokuapp.com/https://api.jikan.moe/v4/anime/?min_score=8.8`, (data) => {
+$.get(`https://api.jikan.moe/v4/anime/?min_score=8.8`, (data) => {
     //grab the carousel container from the index page   
     const $carousel = $("#innerCarousel");    
     console.log(data.data.length) //for debugging purposes
@@ -37,9 +37,9 @@ $.get(`https://cors-anywhere.herokuapp.com/https://api.jikan.moe/v4/anime/?min_s
     }
 });
 }
-
+//saved for later https://cors-anywhere.herokuapp.com/
 function searchAni(){
-    let searchParam = "https://cors-anywhere.herokuapp.com/https://api.jikan.moe/v4/anime/?";
+    let searchParam = "/https://api.jikan.moe/v4/anime/?";
     const $search = $("#search");
     const $carousel = $("#innerCarousel");
     $carousel.empty();//empty previous carousel
@@ -90,7 +90,7 @@ function displayAnimeInfo() {
     const $modal = $("#aniModal");
     const $modalTitle = $("#aniModalLabel");
     const $card = $("#aniCard");
-    $.get(`https://cors-anywhere.herokuapp.com/https://api.jikan.moe/v4/anime/${this.id}`, (data) => {
+    $.get(`https://api.jikan.moe/v4/anime/${this.id}`, (data) => {
         let title = data.data.title
         //check if there is an english title(this value comes back null occaisonally)
         //otherwise use the generic title value
