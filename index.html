@@ -16,16 +16,35 @@
 <body class="bg border border-dark border-5">
     <div class="container-fluid px-4">
     <!-- <div class="container-sm px-4"> -->
-        <div class="row align-items-start">
-            <div class="col shadow p-3 mb-5 bg-light text-dark rounded border border-dark border-4 bg-opacity-75">
-                <input type="text" name='search' id="search">
-                <button id="userSubmit">Search</button>
+        <div class="row shadow p-3 mb-5 bg-light text-dark rounded border border-dark border-4 bg-opacity-75 align-items-start">
+            <div class="row">  
+                <div class="col"></div>
+                <div class="col-6">
+                    <h1 class="display-3 fw-bold text-center">Anime Wizard</h1>
+                </div>
+                <div class="col"></div>
+            </div>  
+                <div class="col-3"></div>          
+                <div class="col-3">
+                    <input type="text" name='search' id="search">
+                    <button id="userSubmit">Search</button>
                 <p>Please choose a search option</p>
+                </div>            
+            <div class="col">
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="flexRadio" id="title" value="q" checked>
                     <label class="form-check-label" for="flexRadio0">
                         <div class="row align-items-start">
                             <div class="col fw-bold">Anime Title:</div>
+                        </div>
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadio" id="min_score" value="min_score">
+                    <label class="form-check-label" for="flexRadio3" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="Choose between 8.5 and 9.2">
+                        <div class="row align-items-start">
+                            <div class="col fw-bold">Minimum Score:</div>
                         </div>
                     </label>
                 </div>
@@ -55,16 +74,7 @@
                             <div class="col-sm-auto border btn-outline-danger fw-bold text-danger shadow" id="Rx">Rx</div>
                         </div>
                     </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadio" id="min_score" value="min_score">
-                    <label class="form-check-label" for="flexRadio3" data-bs-toggle="tooltip" data-bs-placement="top"
-                        title="Choose between 8.5 and 9.2">
-                        <div class="row align-items-start">
-                            <div class="col fw-bold">Minimum Score:</div>
-                        </div>
-                    </label>
-                </div>
+                </div>                
             </div>
         </div>
         <div class="row">    
