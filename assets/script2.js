@@ -169,10 +169,15 @@ function displayAnimeInfo() {
         if (data.data.title_english != null) {
             title = data.data.title_english
         }
+        //error check for null trailer values
+        let trailerAnchor = `<a href=\"${data.data.trailer.url}\" target=\"_blank\">TRAILER</a>`;
+        if (data.data.trailer.url === null){
+            trailerAnchor = `<p>TRAILER NOT AVAILABLE</p>`
+        }
         //set the top of the modal to the name of the show
         $modalTitle.text(title)
         //build the card item shown in the modal with detailed data pulled about the show
-        const $cardImg = $(`<img id=\"cardImg\" src=\"${data.data.images.jpg.large_image_url}\" class=\"card-img-top\" alt=\"...\">`);
+        const $cardImg = $(`<img id=\"cardImg\" src=\"${data.data.images.jpg.large_image_url}\" class=\"card-img-top w-25\" alt=\"...\">`);
         const $aniCardBody = $(`<div class=\"card-body\" id=\"aniCardBody\">
         <h3 class=\"card-title display-3\">${title}</h3>
         <p class=\"card-text\">RATING: ${data.data.rating}</p>
@@ -182,7 +187,7 @@ function displayAnimeInfo() {
         <p class=\"card-text\">STATUS: ${data.data.status}</p>
         <p class=\"card-text\">ABOUT: ${data.data.synopsis}</p>
         <a href=\"${data.data.url}\" target=\"_blank\">MORE INFO</a><br>
-        <a href=\"${data.data.trailer.url}\" target=\"_blank\">TRAILER</a>      
+        ${trailerAnchor}
         </div>`);
         $cardImg.appendTo($card);
         $aniCardBody.appendTo($card);

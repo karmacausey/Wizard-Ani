@@ -13,10 +13,11 @@
     <title>Wizard</title>
 </head>
 
-<body class="bg">
-    <div class="container-sm px-4">
+<body class="bg border border-dark border-5">
+    <div class="container-fluid h-100 px-4">
+    <!-- <div class="container-sm px-4"> -->
         <div class="row align-items-start">
-            <div class="col shadow p-3 mb-5 bg-light text-dark rounded bg-opacity-75">
+            <div class="col shadow p-3 mb-5 bg-light text-dark rounded border border-dark border-4 bg-opacity-75">
                 <input type="text" name='search' id="search">
                 <button id="userSubmit">Search</button>
                 <p>Please choose a search option</p>
@@ -67,7 +68,7 @@
             </div>
             <div class="col">
                 <div id="animeCarousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
-                    <div class="carousel-inner" id="innerCarousel">
+                    <div class="carousel-inner rounded border border-dark border-4" id="innerCarousel">
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#animeCarousel"
                         data-bs-slide="prev">
@@ -80,17 +81,17 @@
                         <span class="visually-hidden">Next</span>
                     </button>
                 </div>
-                <div class="modal fade" id="aniModal" tabindex="-1" aria-labelledby="aniModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-fullscreen">
+                <div class="modal fade" id="aniModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="aniModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl modal-dialog-scrollable">
                         <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="aniModalLabel"></h5>
+                            <div class="modal-header bg-dark bg-gradient">
+                                <h5 class="modal-title text-light" id="aniModalLabel"></h5>
                             </div>
-                            <div class="modal-body">
-                                <div class="card" id="aniCard" style="width: 40rem;">
+                            <div class="modal-body bg-dark bg-gradient">
+                                <div class="card container-fluid rounded border border-dark border-4" id="aniCard" style="width: 60rem;">
                                 </div>
                             </div>
-                            <div class="modal-footer">
+                            <div class="modal-footer bg-dark bg-gradient">
                                 <button id="closeModal" type="button" class="btn btn-secondary"
                                     data-bs-dismiss="modal">Close</button>
                             </div>
