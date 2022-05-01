@@ -18,7 +18,12 @@ p{
   from the API to the carousel */
   .carouselImg{
     object-fit:fill;
-    width:100%;
-    max-width: 95vw;
-    max-height: 95vh;
+    width:800px;
+    max-width: 90vw;
+    max-height: 75vh;
   }
+#animeCarousel{
+  width: 800px;
+  max-width: 90vw;
+  max-height: 75vh;
+}

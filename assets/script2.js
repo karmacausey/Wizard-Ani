@@ -138,7 +138,7 @@ function searchAni(){
             name = data.data[i].title_english;
         }
         //build carousel text content with a button for further data about each show and a rating label
-        const $carouselCaptionDiv = $(`<div class=\"carousel-caption position-absolute top-25 start-25 end-25 bottom-50 bg-light text-dark bg-opacity-50\">
+        const $carouselCaptionDiv = $(`<div class=\"carousel-caption position-absolute start-0 top-0 bg-light text-dark bg-opacity-50\">
         <h1 id=\"${data.data[i].mal_id}\" type=\"button\" class=\"btn btn-dark opacity-100 btn-lg\" data-bs-toggle=\"modal\" data-bs-target=\"#aniModal\">${name}</h1>
         <h5 class=\"opacity-100\">RATING: ${data.data[i].rating}</h5>        
         </div>`);
