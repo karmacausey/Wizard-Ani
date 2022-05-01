@@ -15,22 +15,20 @@
 
 <body class="bg border border-dark border-5">
     <div class="container-fluid px-4">
-    <!-- <div class="container-sm px-4"> -->
+        <!-- <div class="container-sm px-4"> -->
         <div class="row shadow p-3 mb-5 bg-light text-dark rounded border border-dark border-4 bg-opacity-75 align-items-start">
-            <div class="row">  
+            <div class="row">
                 <div class="col"></div>
                 <div class="col-6">
                     <h1 class="display-3 fw-bold text-center">Anime Wizard</h1>
                 </div>
-                <div class="col"></div>
-            </div>  
-                <div class="col-3"></div>          
-                <div class="col-3">
-                    <input type="text" name='search' id="search">
-                    <button id="userSubmit">Search</button>
-                <p>Please choose a search option</p>
-                </div>            
+                <div class="col d-sm-none d-md-block"></div>
+            </div>
+            <div class="col-4 d-sm-none d-md-block"></div>
             <div class="col">
+                <input type="text" name='search' id="search">
+                <button id="userSubmit">Search</button>
+                <p>Please choose a search option</p>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="flexRadio" id="title" value="q" checked>
                     <label class="form-check-label" for="flexRadio0">
@@ -58,7 +56,7 @@
                             <div class="col border fw-bold shadow" id="ova">OVA</div>
                             <div class="col border fw-bold shadow" id="special">SPECIAL</div>
                             <div class="col border fw-bold shadow" id="ona">ONA</div>
-                            <div class="col border fw-bold shadow" id="music">MUSIC</div>                            
+                            <div class="col border fw-bold shadow" id="music">MUSIC</div>
                         </div>
                     </label>
                 </div>
@@ -67,19 +65,24 @@
                     <label class="form-check-label" for="flexRadio2">
                         <div class="row align-items-start">
                             <div class="col fw-bold">Rating:</div>
-                            <div class="col-sm-auto border btn-outline-success fw-bold text-success shadow" id="G">G</div>
-                            <div class="col-sm-auto border btn-outline-primary fw-bold text-primary shadow" id="PG-13">PG-13</div>
-                            <div class="col-sm-auto border btn-outline-warning fw-bold text-warning shadow" id="R17">R - 17+</div>
-                            <div class="col-sm-auto border btn-outline-danger fw-bold text-danger shadow" id="Rplus">R+</div>
-                            <div class="col-sm-auto border btn-outline-danger fw-bold text-danger shadow" id="Rx">Rx</div>
+                            <div class="col-sm-auto border btn-outline-success fw-bold text-success shadow" id="G">G
+                            </div>
+                            <div class="col-sm-auto border btn-outline-primary fw-bold text-primary shadow" id="PG-13">
+                                PG-13</div>
+                            <div class="col-sm-auto border btn-outline-warning fw-bold text-warning shadow" id="R17">R -
+                                17+</div>
+                            <div class="col-sm-auto border btn-outline-danger fw-bold text-danger shadow" id="Rplus">R+
+                            </div>
+                            <div class="col-sm-auto border btn-outline-danger fw-bold text-danger shadow" id="Rx">Rx
+                            </div>
                         </div>
                     </label>
-                </div>                
+                </div>
             </div>
         </div>
-        <div class="row">    
-            <div class="col"></div> 
-            <div class="col">       
+        <div class="row">
+            <div class="col"></div>
+            <div class="col">
                 <div id="animeCarousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
                     <div class="carousel-inner rounded border border-dark border-4" id="innerCarousel">
                     </div>
@@ -94,14 +97,15 @@
                         <span class="visually-hidden">Next</span>
                     </button>
                 </div>
-                <div class="modal fade" id="aniModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="aniModalLabel" aria-hidden="true">
+                <div class="modal fade" id="aniModal" data-bs-backdrop="static" tabindex="-1"
+                    aria-labelledby="aniModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-xl modal-dialog-scrollable">
                         <div class="modal-content">
                             <div class="modal-header bg-dark bg-gradient">
                                 <h5 class="modal-title text-light" id="aniModalLabel"></h5>
                             </div>
                             <div class="modal-body bg-dark bg-gradient">
-                                <div class="card container-fluid rounded border border-dark border-4" id="aniCard" style="width: 60rem;">
+                                <div class="card container-fluid rounded border border-dark border-4" id="aniCard">
                                 </div>
                             </div>
                             <div class="modal-footer bg-dark bg-gradient">

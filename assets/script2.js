@@ -185,7 +185,7 @@ function displayAnimeInfo() {
         <p class=\"card-text\">NUMBER OF EPISODES: ${data.data.episodes}</p>       
         <p class=\"card-text\">AIRED: ${data.data.aired.prop.from.year} to ${data.data.aired.prop.to.year}</p>
         <p class=\"card-text\">STATUS: ${data.data.status}</p>
-        <p class=\"card-text\">ABOUT: ${data.data.synopsis}</p>
+        <p class=\"card-text about\">ABOUT: ${data.data.synopsis}</p>
         <a href=\"${data.data.url}\" target=\"_blank\">MORE INFO</a><br>
         ${trailerAnchor}
         </div>`);
