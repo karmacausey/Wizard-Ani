@@ -20,12 +20,12 @@ p{
     object-fit:fill;
     width:800px;
     max-width: 90vw;
-    max-height: 65vh;
+    max-height: 60vh;
   }
 #animeCarousel{
   width: 800px;
   max-width: 90vw;
-  max-height: 65vh;
+  max-height: 60vh;
 }
 
 #about{
